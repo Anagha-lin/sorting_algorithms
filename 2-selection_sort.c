@@ -1,37 +1,34 @@
 #include "sort.h"
 
 /**
- * selection_sort - Sorts an array of integers in ascending order
- *                   using the Selection sort algorithm.
- * @array: The array to be sorted
- * @size: Number of elements in @array
+ * insertion_sort_list - Sorts a doubly linked list of integers in ascending order
+ * using the Insertion sort algorithm.
+ *
+ * @list: Pointer to the doubly linked list to be sorted
  */
-void selection_sort(int *array, size_t size)
+void insertion_sort_list(listint_t **list)
 {
-	size_t i, j, min_idx;
+    /* Your implementation here */
+    listint_t *insert_val, *first_iteration, *current;
 
-	if (array == NULL || size < 2)
-		return;
+    if (list == NULL || *list == NULL)
+        return;
 
-	for (i = 0; i < size - 1; i++)
-	{
-		min_idx = i;
-		for (j = i + 1; j < size; j++)
-		{
-			if (array[j] < array[min_idx])
-				min_idx = j;
-		}
-
-		if (min_idx != i)
-		{
-			/* Swap array[i] and array[min_idx] */
-			int temp = array[i];
-
-			array[i] = array[min_idx];
-			array[min_idx] = temp;
-
-			print_array(array, size);
-		}
-	}
+    for (current = (*list)->next; current != NULL; current = current->next)
+    {
+        for (first_iteration = current; first_iteration->prev != NULL; first_iteration = first_iteration->prev)
+        {
+            if (first_iteration->n < first_iteration->prev->n)
+            {
+                insert_val = first_iteration->prev;
+                swap_nodes(list, &first_iteration, insert_val);
+                print_list(*list);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
 }
 
