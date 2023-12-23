@@ -36,6 +36,9 @@ void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void swap_int(int *a, int *b);
+void bitonic_merge(int *array, size_t start, size_t size, int dir);
+void bitonic_sort_recursive(int *array, size_t start, size_t size, int dir);
+void bitonic_sort(int *array, size_t size);
 
 #endif /* SORT_H */
 
